@@ -1,0 +1,11 @@
+<p>snmp works!</p>
+<div *ngIf='done'>Порт в: {{this.receivedSpeed}} мб</div>
+<div>
+    <input type="text" name='ip' [(ngModel)]='speed.ip' />
+    <input type="text" name='sw' [(ngModel)]='speed.sw' />
+</div>
+<div>
+    <button (click)='submit(speed)'>найти</button>
+</div>
+
+<!-- .toString().slice(0, -6) -->
