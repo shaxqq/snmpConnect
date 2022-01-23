@@ -12,7 +12,7 @@ export class SnmpController {
 
 
     @Post()
-       getSnmp(@Req() req: Request, @Res() res: Response) {
+      async getSnmp(@Req() req: Request, @Res() res: Response) {
         // const body = {
         //     ip: req.body.ip,
         //     sw: req.body.sw
@@ -20,9 +20,9 @@ export class SnmpController {
          const ip: string = req.body.ip
          const sw: string = req.body.sw
          // console.log(ip)
-        // console.log(body)
+        // console.log(res)
         // console.log(sw)
-            this.snmpService.getSnmp(ip, sw).then((data) => { return res.json(data) })
+         await this.snmpService.getSnmp(ip, sw).then((data) => { return res.jsonp(data) })
       
      
         // console.log('link: ' + speed)

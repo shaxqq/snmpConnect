@@ -1,5 +1,7 @@
 <p>snmp works!</p>
-<div *ngIf='done'>Порт в: {{this.receivedSpeed}} мб</div>
+<div *ngIf='done'>Порт в: {{this.receivedSpeed[0].toString().slice(0, -6)}} мб</div>
+<div *ngIf='done'>{{this.receivedSpeed[1] == '1' ? ' admin Up': ' admin down'}}</div>
+<div *ngIf='done'>{{this.receivedSpeed[2] == '1' ? ' link Up': ' link down'}}</div>
 <div>
     <input type="text" name='ip' [(ngModel)]='speed.ip' />
     <input type="text" name='sw' [(ngModel)]='speed.sw' />

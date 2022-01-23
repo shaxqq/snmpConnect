@@ -9,7 +9,7 @@ export class SnmpService {
 
   constructor(private http: HttpClient) { }
 
-  getSpeed(speed:Speed){
+   getSpeed(speed:Speed){
     const body = {
       ip: speed.ip,
       sw: speed.sw
