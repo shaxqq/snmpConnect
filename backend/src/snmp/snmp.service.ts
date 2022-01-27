@@ -6,36 +6,60 @@ let snmp = require ("net-snmp");
 
 @Injectable()
 export class SnmpService {
-  async getSnmp(ip: string, sw: string) {
-    
-    return await new Promise((resolve, rej): any => {
-      let session = snmp.createSession(ip, '74FRfR7ewJar');
-      let oids = "1.3.6.1.2.1.2.2.1";
-      let result = new Array
+   getSnmp(sw: string, port: string) {
 
-       const feedCb = async (varbinds: any) => {
+
+    
+    return new Promise((resolve, rej) => {
+      let session = snmp.createSession(sw, '74FRfR7ewJar');
+      var result = []
+      
+     // var resulT = result.concat(result)
+       const feedCb = (varbinds: any) => {
            for (let objID of varbinds) {
             let masOid = objID.oid.split('.');
             if( masOid[9] == 5 || masOid[9] == 7 || masOid[9] == 8 ){
-              if ( masOid[10] == sw ) {
-                  result.push(objID.value)
+              if ( masOid[10] == port ) {
+                result.push( objID.value )
               }
             }
           }
-          if( result.length == 3){
-            return resolve(result)          
+          
+          if(result.length != 0){
+            console.log(result)
+             return resolve(result)
            }
-           
+            
          }
         
+         const fCb = (varbinds: any)=>{
+           for(let objID of varbinds){
+            let masOid = objID.oid.split('.');
+            let mac = '';
+           for(let i = 14; i < masOid.length; i++)
+           {
+               let oidMac = parseInt(masOid[i]).toString(16);
+               if (oidMac.length == 1)
+               oidMac = "0" + oidMac;
+               mac += oidMac;
+           }
+          // objID.value == port ? result.push(mac) : result.push('')
+           if(objID.value == port)
+           {
+            result.push( mac )
+           }
+         }
+        }
+
         const doneCb = (err: string) => {
           if(err) {
             console.log('error: ', err)
             session.close();
           }
          }
-
-      session.subtree(oids, feedCb, doneCb)
+         
+      session.subtree("1.3.6.1.2.1.2.2.1", feedCb, doneCb)
+      session.subtree("1.3.6.1.2.1.17.7.1.2.2.1.2", fCb, doneCb)
     })
   }
 }

@@ -12,40 +12,10 @@ export class SnmpController {
 
 
     @Post()
-      async getSnmp(@Req() req: Request, @Res() res: Response) {
-        // const body = {
-        //     ip: req.body.ip,
-        //     sw: req.body.sw
-        // }
-         const ip: string = req.body.ip
+       getSnmp(@Req() req: Request, @Res() res: Response) {
          const sw: string = req.body.sw
-         // console.log(ip)
-        // console.log(res)
-        // console.log(sw)
-         await this.snmpService.getSnmp(ip, sw).then((data) => { return res.jsonp(data) })
-      
-     
-        // console.log('link: ' + speed)
-        // return setTimeout(() =>{res.json(data)}, 10000) }
-        
-    }
-
-
-    // @Post()
-    //     async findAll(@Body() snmpDto: SnmpDto){
-    //         console.log(snmpDto)
-    //         // const ip = body.ip
-    //         // const sw = body.sw
-    //         // console.log(ip)
-    //          return this.snmpService.findAll(snmpDto)
-    //     }
-    // "172.17.4.11", "74FRfR7ewJar"
-
-    // @Get()
-    // getOne(@Param('link') link: string): string {
-    //     return 'link ' + link
-
-    // }
-
-
+         const port: string = req.body.port
+          this.snmpService.getSnmp(sw, port).then((data) => { return res.json( data ) }
+          )
+    } 
 }

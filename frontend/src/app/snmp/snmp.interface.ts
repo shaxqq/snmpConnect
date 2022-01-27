@@ -1,3 +1,3 @@
-export class Speed {
-    constructor(public ip: string, public sw: string) {}
+export class Snmp {
+    constructor(public sw: string, public port: string) {}
 }
