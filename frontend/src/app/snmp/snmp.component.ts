@@ -13,7 +13,20 @@ export class SnmpComponent implements OnInit {
   snmp: Snmp = new Snmp('', '')
   // ip:string = ''
   // sw:string = ''
-  receivedSnmp = ''
+  receivedSnmp = {
+    speed: '',
+    linkSt: '',
+    adminSt: '',
+    macAddr: '',
+    description: '',
+    vlan: '',
+    binding: {
+      ip: '',
+      lease: '',
+      type: '',
+      int: '',
+    },
+  }
   done: boolean = false
   constructor(private snmpService: SnmpService) { }
 

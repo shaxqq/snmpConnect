@@ -15,7 +15,8 @@ export class SnmpController {
        getSnmp(@Req() req: Request, @Res() res: Response) {
          const sw: string = req.body.sw
          const port: string = req.body.port
-          this.snmpService.getSnmp(sw, port).then((data) => { return res.json( data ) }
+        // console.log('port: ', port)
+          this.snmpService.getSnmp(sw, port).then((data) => { return res.json(data) }
           )
     } 
 }

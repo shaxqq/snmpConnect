@@ -1,8 +1,34 @@
 <p>snmp works!</p>
-<div *ngIf='done'>MAC: {{this.receivedSnmp[0] == undefined ? 'нет мака' : this.receivedSnmp[0]}}</div>
-<div *ngIf='done'>Порт в: {{this.receivedSnmp[1].toString().slice(0, -6)}} мб</div>
-<div *ngIf='done'>{{this.receivedSnmp[2] == '1' ? ' admin Up': ' admin down'}}</div>
-<div *ngIf='done'>{{this.receivedSnmp[3] == '1' ? ' link Up': ' link down'}}</div>
+
+<div>
+    <div>MAC: <span *ngIf='done'>{{this.receivedSnmp.macAddr}}</span></div> 
+    <div>Порт в: <span *ngIf='done'> {{this.receivedSnmp.speed.slice(0, -6)}} мб </span></div>
+    <div>Админское состояние: <span *ngIf='done'>{{this.receivedSnmp.adminSt == '1' ? ' Up': ' Down'}}</span></div>
+    <div>Физическое состояние: <span *ngIf='done'>{{this.receivedSnmp.linkSt == '1' ? ' Up': ' Down'}}</span></div>
+    <div>Description: <span *ngIf='done'>{{this.receivedSnmp.description}}</span></div>
+    <div>Vlan: <span *ngIf='done'>{{this.receivedSnmp.vlan}}</span></div>
+</div>
+
+
+
+<div>Привязка:
+    <table class="binding">
+    <tr>
+        <td>MAC Address</td>
+        <td>IP Address</td>
+        <td>Lease (sec)</td>
+        <td>Type:</td>
+        <td>Port:</td>
+    </tr>
+    <tr>
+        <td>{{this.receivedSnmp.macAddr}}</td>
+        <td>{{this.receivedSnmp.binding.ip}}</td>
+        <td>{{this.receivedSnmp.binding.lease}}</td>
+        <td *ngIf='done'>{{this.receivedSnmp.binding.type == '1' ? ' learned' : ' static'}}</td>
+        <td>{{this.receivedSnmp.binding.int}}</td>
+    </tr>
+    </table>
+</div>
 <div>
     <input type="text" name='sw' [(ngModel)]='snmp.sw' />
     <input type="text" name='port' [(ngModel)]='snmp.port' />
@@ -11,4 +37,4 @@
     <button (click)='submit(snmp)'>найти</button>
 </div>
 
-<!-- .toString().slice(0, -6) -->
+<!-- .toString().slice(0, -6) + -->
