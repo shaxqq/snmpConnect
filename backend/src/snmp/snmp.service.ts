@@ -155,16 +155,44 @@ export class SnmpService {
           }, 2000)
         }
       }
-      //cabletest linksys
+      //cabletest 
       const fCbAny = (varbinds: any) => {
         for (let objID of varbinds) {
           let masOid = objID.oid.split('.');
-          console.log(masOid[13])
-          if (masOid[13] == port){
-            console.log(objID)
+          let ip = ''
+          let int = ''
+          let lease = ''
+          let mac = ''
+          if (masOid[14] == 5){
+            int += objID.value
+          }
+          console.log(result.binding.ip == objID.oid.slice(36))
+          console.log('res' +  result.binding.ip)
+          console.log('obj' + objID.oid.slice(36))
+          setTimeout(() => {
+            if (masOid[14] == 3 && result.binding.ip == objID.oid.slice(36)){
+              lease += objID.value
+            }
+            result.binding.lease += lease
+          }, 1000)
+         
+
+          let portg = parseInt(port) + 2082476032;
+            res = portg.toString()
+          console.log(objID)       // 16-19 
+
+          if(int == res){
+            for (let i = 16; i < masOid.length; i++) {        
+              ip += masOid[i] + '.'
+            }
+            result.binding.ip += ip.slice(0, -1)
+            
+            result.binding.int += parseInt(int) - 2082476032
+            result.binding.type += '1' 
+           // console.log(ip.slice(0, -1))
+          }
           }
           
-        }
       }
 
       const doneCb = (err: string) => {
@@ -185,7 +213,7 @@ export class SnmpService {
       session.subtree("1.3.6.1.2.1.31.1.1.1.18", fCbDescr, doneCb)
       session.subtree("1.3.6.1.2.1.17.7.1.4.5.1.1", fCbVlan, doneCb)
       session.subtree("1.3.6.1.4.1.3955.89.112.1.11.1", fCbBindingLinksys, doneCb)
-      session.subtree("1.3.6.1.4.1.171.12.58.1.1.1", fCbAny, doneCb)
+      session.subtree("1.3.6.1.4.1.8886.6.1.23.1.1.5.1", fCbAny, doneCb)
      // .1.3.6.1.2.1.16.1.1.1.18.14
     })
   }
