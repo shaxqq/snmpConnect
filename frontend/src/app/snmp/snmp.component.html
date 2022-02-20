@@ -29,6 +29,22 @@
     </tr>
     </table>
 </div>
+<div>Ошибки:
+    <table class="error">
+    <tr>
+        <td>FCS</td>
+        <td>Collision</td>
+        <td>MAC Errors</td>
+        <td>Symbol</td>
+    </tr>
+    <tr>
+        <td>{{this.receivedSnmp.err.fcs}}</td>
+        <td>{{this.receivedSnmp.err.collision}}</td>
+        <td>{{this.receivedSnmp.err.macEr}}</td>
+        <td>{{this.receivedSnmp.err.symbol}}</td>
+    </tr>
+    </table>
+</div>
 <div>
     <input type="text" name='sw' [(ngModel)]='snmp.sw' />
     <input type="text" name='port' [(ngModel)]='snmp.port' />

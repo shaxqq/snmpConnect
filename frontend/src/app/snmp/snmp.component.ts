@@ -26,6 +26,12 @@ export class SnmpComponent implements OnInit {
       type: '',
       int: '',
     },
+    err: {
+      fcs: '',
+      collision: '',
+      macEr: '',
+      symbol: ''
+    }
   }
   done: boolean = false
   constructor(private snmpService: SnmpService) { }

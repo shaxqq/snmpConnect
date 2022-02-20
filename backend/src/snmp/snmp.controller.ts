@@ -1,4 +1,4 @@
-import { Controller, Get, Req, Res, HttpStatus, Post, Body } from '@nestjs/common';
+import { Controller, Req, Res, Post} from '@nestjs/common';
 // import { GetSnmpDto } from './dto/get.snmp.dto';
 import { SnmpService } from './snmp.service';
 //import { Snmp } from './interfaces/snmp.interface';
@@ -12,11 +12,12 @@ export class SnmpController {
 
 
     @Post()
-       getSnmp(@Req() req: Request, @Res() res: Response) {
+      getSnmp(@Req() req: Request, @Res() res: Response){
          const sw: string = req.body.sw
          const port: string = req.body.port
         // console.log('port: ', port)
-          this.snmpService.getSnmp(sw, port).then((data) => { return res.json(data) }
+         this.snmpService.getSnmp(sw, port).then((data) => { return res.json(data) }
           )
-    } 
+      } 
 }
+ //
