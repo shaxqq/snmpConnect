@@ -1,5 +1,4 @@
 <p>snmp works!</p>
-
 <div>
     <div>MAC: <span *ngIf='done'>{{this.receivedSnmp.macAddr}}</span></div> 
     <div>Порт в: <span *ngIf='done'> {{this.receivedSnmp.speed.slice(0, -6)}} мб </span></div>
@@ -8,9 +7,6 @@
     <div>Description: <span *ngIf='done'>{{this.receivedSnmp.description}}</span></div>
     <div>Vlan: <span *ngIf='done'>{{this.receivedSnmp.vlan}}</span></div>
 </div>
-
-
-
 <div>Привязка:
     <table class="binding">
     <tr>
@@ -24,7 +20,7 @@
         <td>{{this.receivedSnmp.macAddr}}</td>
         <td>{{this.receivedSnmp.binding.ip}}</td>
         <td>{{this.receivedSnmp.binding.lease}}</td>
-        <td *ngIf='done'>{{this.receivedSnmp.binding.type == '1' ? ' learned' : ' static'}}</td>
+        <td *ngIf='done'>{{this.receivedSnmp.binding.type}}</td>
         <td>{{this.receivedSnmp.binding.int}}</td>
     </tr>
     </table>
@@ -45,12 +41,18 @@
     </tr>
     </table>
 </div>
-<div>
-    <input type="text" name='sw' [(ngModel)]='snmp.sw' />
+<div class="srcSnmpInput">
+    <span>
+    <p>IP свитча:</p>
+    <input class="snmpInput" type="text" name='sw' [(ngModel)]='snmp.sw' />
+</span>
+<span>
+    <p>Порт:</p>
     <input type="text" name='port' [(ngModel)]='snmp.port' />
+</span>
 </div>
 <div>
-    <button (click)='submit(snmp)'>найти</button>
+    <button [ngClass]="{scanSwPort: this.done}" [disabled]="!this.done" (click)='submit(snmp)'>Найти</button>
 </div>
 
 <!-- .toString().slice(0, -6) + -->

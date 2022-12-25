@@ -1,7 +1,7 @@
 import { result } from '../dto/snmp.dto'
 
 // binding graisecom 
-export const fCbBindingGRaisecom = (varbinds: any) => {
+export const bindingGRaisecom = (varbinds: any) => {
     for (let objID of varbinds) {
         let masOid = objID.oid.split('.');
         let ip = ''
@@ -10,11 +10,11 @@ export const fCbBindingGRaisecom = (varbinds: any) => {
         if (masOid[14] == 5) {
             int = objID.value
         }
-        setTimeout(() => {
+        // setTimeout(() => {
             if (masOid[14] == 3 && result.binding.ip == objID.oid.slice(36)) {
                 result.binding.lease = objID.value
             }
-        }, 1000)
+        // }, 1000)
 
         if (int > '5000') {
             let portg = parseInt(result.port) + 2082476032;

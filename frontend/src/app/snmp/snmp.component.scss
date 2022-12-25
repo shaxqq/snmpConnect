@@ -1,22 +1,66 @@
-.binding {
-    border: 2px solid black;
-    margin-bottom: 15px;
-    tr {
-        text-align: center;
-    }
-    td {
-       width: 100px; 
-       height: 20px;
-    }
+.dataList {
+    list-style: none;
 }
-.error {
-    border: 2px solid black;
-    margin-bottom: 15px;
-    tr {
-        text-align: center;
+table {
+    background-color: #343434;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+    margin: 1rem 0 2rem;
+    padding: 0.5rem;
+}
+tr {
+    text-align: center;
+}
+td {
+   width: 100px; 
+   height: 20px;
+}
+input, textarea {
+    background-color: #424242;
+    color: aliceblue;
+}
+button {
+    display: flex;
+    justify-content: center;
+    margin: 0.5rem;
+    padding: 0.2rem 0.5rem 0.2rem 0.5rem ;
+    background-color: #1b1b1b;
+    border-radius: 0.25rem;
+    border: 0;
+    color: #cdcdcd;
+    cursor: pointer;
+
+    &:hover{
+        background-color: #858585; 
     }
-    td {
-       width: 100px; 
-       height: 20px;
+    &:disabled {
+        background-color: #ec3f3f;
+        color: #343434;
+        cursor: progress;
     }
+    
+}
+.scanResult {
+    width: 30rem;
+    height: 15rem;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+}
+.scanForm {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+input {
+    border: 1px solid #424242;
+}
+.scanFormInput {
+    margin-bottom: 0.5rem;
+}
+.snmpInput {
+    margin-right: 0.2rem;
+}
+.srcSnmpInput {
+    display: flex;
 }

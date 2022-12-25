@@ -1,7 +1,7 @@
 import { result } from '../dto/snmp.dto'
 
 //binding raisecom
-export const fCbBindingRaisecom = (varbinds: any) => {
+export const bindingRaisecom = (varbinds: any) => {
     for (let objID of varbinds) {
         let masOid = objID.oid.split('.');
         let ip = ''
@@ -9,11 +9,11 @@ export const fCbBindingRaisecom = (varbinds: any) => {
         if (masOid[14] == 5) {
             int = objID.value
         }
-        setTimeout(() => {
+        // setTimeout(() => {
             if (masOid[14] == 3 && result.binding.ip == objID.oid.slice(34)) {
                 result.binding.lease = objID.value
             }
-        }, 1000)
+        // }, 1000)
 
         if (int < '5000') {
             if (int == result.port) {

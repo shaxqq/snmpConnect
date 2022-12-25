@@ -18,18 +18,6 @@
           collision: '',
           macEr: '',
           symbol: ''
-        }
+        },
+        swVerson: ''
       }
-
-      // export class Result {
-//         speed: string
-//         linkSt: string
-//         adminSt: string
-//         macAddr: string
-//         description: string
-//         vlan: string
-//         ip: string
-//         lease: string
-//         type: string
-//         int: string
-//       }

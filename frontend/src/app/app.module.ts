@@ -4,13 +4,14 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SnmpComponent } from './snmp/snmp.component';
+import { ScanComponent, SnmpComponent } from './snmp/snmp.component';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SnmpComponent
+    SnmpComponent,
+    ScanComponent
   ],
   imports: [
     BrowserModule,

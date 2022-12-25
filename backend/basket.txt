@@ -1,0 +1,91 @@
+    //  session.subtree(".1.3.6.1.4.1.3902.15.2.30.2.4.1.3", zteDescr, doneEr)
+    //  session.subtree(".1.3.6.1.4.1.3902.15.2.30.2.4.1.9.1", zteVlan, doneEr)
+     // .1.3.6.1.2.1.16.1.1.1.18.14 
+     //1.3.6.1.2.1.10.7.2.1.3. fcs err/ crc  AlignErrors + 1.3.6.1.2.1.10.7.2.1.2
+//1.3.6.1.2.1.10.7.2.1.16. MAC Rx Errors
+//1.3.6.1.2.1.10.7.2.1.19 link duplex 2-half  3-full 1-nolink
+//1.3.6.1.2.1.10.7.2.1.9 collision err
+//1.3.6.1.2.1.10.7.2.1.18 symbol err
+//1.3.6.1.2.1.31.1.1.1.18 gerkon linksys
+//1.3.6.1.4.1.8886.6.1.1.1.19.0 // 16.0 
+//Name/OID: .1.3.6.1.4.1.8886.6.1.1.1.19.0; Value (OctetString): ISCOM2828F-AC
+//Name/OID: .1.3.6.1.4.1.8886.6.1.1.1.19.0; Value (OctetString): ISCOM2624G-4GE-AC
+
+
+bdcom
+        // 172.21.34.100 58d9.d53c.53c8 100.67.125.6 epon0/1:5 Ifindex is 15 
+     //   EPON0/4:51 Ifindex is 215
+       // 1-ip 2-mac 3-vlan 4-port 5-lease 6-type?
+            // .1.3.6.1.2.1.31.1.1.1.18 бдком дескр
+     // 1.3.6.1.4.1.3320.9.64.4.1.1.2 бдком порт (EPON0/1:1)   .1.3.6.1.4.1.3320.101.12.1.1.3.12(№onu).1(port)?
+     //1.3.6.1.2.1.2.2.1.2 - Получаем список портов
+     //.1.3.6.1.4.1.3320.101.11.1.1.7.X.YYY.YYY.YYYY.YYY.YYYY.YYYY - Метраж конкретной ONU (INTEGER: 1345)
+     //затух>>>>>>
+//      .1.3.6.1.4.1.3320.9.183.1.1.5.X - Затухание до ONU на 3310B (INTEGER: -279) нужно делить на 10 
+// .1.3.6.1.4.1.3320.101.108.1.3.X - Затухание до ONU на 3310C (INTEGER: -219) нужно делить на 10 
+
+//         1.3.6.1.4.1.3320.9.63.1.7
+// 1.3.6.1.4.1.3320.9.63.1.7.1.2 (TX)
+// 1.3.6.1.4.1.3320.9.63.1.7.1.3 (RX)
+// А на BDCOM P3608-2TE следующие OID:
+
+// 1.3.6.1.4.1.3320.9.63.1.7.1.3.5  (RX)
+// 1.3.6.1.4.1.3320.9.63.1.7.1.2.5  (TX)
+
+
+
+scan
+
+ //a8.5e.45.29.8c.90
+ // 50d2.f52d.bd92    / 171 / 3
+//  Internet  172.28.1.181            2   ARPA   Vlan1101
+// Internet  172.28.1.171           13   ARPA   Vlan1101
+// Internet  172.28.1.151            1    ARPA   Vlan1101
+// Internet  172.28.1.131            3   001e.e5d0.c2af  ARPA   Vlan1101
+// Internet  172.28.1.141           13   0022.9365.2b3e  ARPA   Vlan1101
+// Internet  172.28.1.200            7   0022.9363.6473  ARPA   Vlan1101
+// Internet  172.28.1.51            12   0022.9357.29ce  ARPA   Vlan1101
+// Internet  172.28.1.61             2   44e4.d9c9.d003  ARPA   Vlan1101
+// Internet  172.28.1.21             0   44e4.d9c9.11bd  ARPA   Vlan1101
+// Internet  172.28.1.22             0   44e4.d9c9.3158  ARPA   Vlan1101
+// Internet  172.28.1.31             1   44e4.d9c9.654b  ARPA   Vlan1101
+// Internet  172.28.1.1              -   000f.34e0.62c3  ARPA   Vlan1101
+// Internet  172.28.1.11             2   44e4.d9c9.5b48  ARPA   Vlan1101
+// Internet  172.28.1.101            0   44e4.d9c9.55fc  ARPA   Vlan1101
+// Internet  172.28.1.111            8   f07d.68a3.8500  ARPA   Vlan1101
+// Internet  172.28.1.71             2   44e4.d9c9.d142  ARPA   Vlan1101
+
+
+// d46e.0e99.ed93 / 10 / 1:1
+// 172.21.72.11     3     8479.735b.3384  vlan2172     2172    N/A     gei_1/4
+// 172.21.72.20     7     fcfa.f7c9.83b0  vlan2172     2172    N/A     gei_1/4
+// 172.21.72.10     5     9845.627f.57c6  vlan2172     2172    N/A     gei_1/4
+
+
+//1.3.6.1.2.1.10.7.2.1.3. fcs err/ crc  AlignErrors + 1.3.6.1.2.1.10.7.2.1.2
+//1.3.6.1.2.1.10.7.2.1.16. MAC Rx Errors
+//1.3.6.1.2.1.10.7.2.1.19 link duplex 2-half  3-full 1-nolink
+//1.3.6.1.2.1.10.7.2.1.9 collision err
+//1.3.6.1.2.1.10.7.2.1.18 symbol err
+//1.3.6.1.2.1.31.1.1.1.18 gerkon linksys
+//1.3.6.1.4.1.8886.6.1.1.1.19.0 // 16.0
+//Name/OID: .1.3.6.1.4.1.8886.6.1.1.1.19.0; Value (OctetString): ISCOM2828F-AC
+//Name/OID: .1.3.6.1.4.1.8886.6.1.1.1.19.0; Value (OctetString): ISCOM2624G-4GE-AC
+
+    // 172.29.236.11 6032.b1de.6fb1 epon0/3:6
+                // 172.21.34.100 58d9.d53c.53c8 100.67.125.6 epon0/1:5 Ifindex is 15
+                // 172.20.51.91 64:66:b3:e6:62:43 2
+                // 08.62.66.ba.ba.e7 3
+                // 172.22.55.21 
+                // 172.22.55.121	
+                // 172.22.55.111	
+                // 172.22.55.71
+                // function bdcomPort(varbinds: any) {
+                //     for (let objID of varbinds) {
+                //         let masOid = objID.oid.split('.');
+                //      //   if(masOid[10] === result){
+                //             ponPort = objID.value.toString('utf8')
+                //      //   }
+                //         console.log(masOid[10])
+                //     }
+                // }

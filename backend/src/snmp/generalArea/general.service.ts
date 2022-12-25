@@ -1,7 +1,7 @@
 import { result } from '../dto/snmp.dto'
 
 // speed
-export const fCbSpeed = (varbinds: any) => {
+export const speedPort = (varbinds: any) => {
     for (let objID of varbinds) {
         let masOid = objID.oid.split('.');
         if (masOid[10] > 5000) {
@@ -15,7 +15,7 @@ export const fCbSpeed = (varbinds: any) => {
 }
 
 // admin status
-export const fCbAdmSt = (varbinds: any) => {
+export const admStPort = (varbinds: any) => {
     for (let objID of varbinds) {
         let masOid = objID.oid.split('.');
         if (masOid[10] > 5000) {
@@ -29,7 +29,7 @@ export const fCbAdmSt = (varbinds: any) => {
 }
 
 // physical status
-export const fCbPhySt = (varbinds: any) => {
+export const phyStPort = (varbinds: any) => {
     for (let objID of varbinds) {
         let masOid = objID.oid.split('.');
         if (masOid[10] > 5000) {
@@ -43,7 +43,7 @@ export const fCbPhySt = (varbinds: any) => {
 }
 
 // mac
-export const fCbMac = (varbinds: any) => {
+export const macPort = (varbinds: any) => {
     for (let objID of varbinds) {
         let masOid = objID.oid.split('.');
         let mac = '';
@@ -64,7 +64,7 @@ export const fCbMac = (varbinds: any) => {
 }
 
 // description
-export const fCbDescr = (varbinds: any) => {
+export const descrPort = (varbinds: any) => {
     for (let objID of varbinds) {
         let masOid = objID.oid.split('.');
         if (masOid[10] > 5000) {
@@ -77,31 +77,32 @@ export const fCbDescr = (varbinds: any) => {
     }
 }
 // vlan
-export const fCbVlan = (varbinds: any) => {
+export const vlanPort = (varbinds: any) => {
     for (let objID of varbinds) {
         let masOid = objID.oid.split('.');
         if (masOid[10] > 5000) {
             let portg = parseInt(result.port) + 2082476032;
             result.portG = portg.toString()
         }
-        setTimeout(() => {
+        // setTimeout(() => {
             if (masOid[13] == result.port || masOid[13] == result.portG) {
                 result.vlan = objID.value
             }
-        }, 1000)
+        // }, 1000)
     }
 }
 
 
  // error
- export const fCbError = (varbinds: any) => {
+ export const errorPort = (varbinds: any) => {
     for (let objID of varbinds) {
       let masOid = objID.oid.split('.');
+      
     if (masOid[10] > 5000) {
         let portg = parseInt(result.port) + 2082476032;
         result.portG = portg.toString()
     }
-     setTimeout(() => {
+    //  setTimeout(() => {
         if (masOid[10] == 3 && masOid[11] == result.port) {
             result.err.fcs = objID.value
         }
@@ -114,6 +115,6 @@ export const fCbVlan = (varbinds: any) => {
         if (masOid[10] == 18 && masOid[11] == result.port) {
             result.err.symbol = objID.value
         }
-     }, 1000)
+    //  }, 1000)
     }
   }
