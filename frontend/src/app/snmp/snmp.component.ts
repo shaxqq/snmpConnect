@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { SnmpService, ScanService } from './snmp.service';
 import { Snmp, Scan } from './snmp.interface';
 
+
 @Component({
   selector: 'app-snmp',
-  templateUrl: './snmp.component.html',
+  templateUrl: './snmp.component.html', 
   styleUrls: ['./snmp.component.scss'],
   providers: [SnmpService]
 })
@@ -35,20 +36,23 @@ export class SnmpComponent implements OnInit {
   constructor(public snmpService: SnmpService) { }
 
   ngOnInit(): void {
+   
   }
+    
 
   submit(snmp: Snmp) {
     this.done = false
     this.snmpService.getSnmp(snmp).subscribe((data:any) => {
-      // if (data.includes('Request Timeout') || data.includes('ERROR')){
-      //   data = ''
-      // }
         this.receivedSnmp = data
         this.done=true;
-        console.log(data)
-       // console.log(this.receivedSpeed.toString().slice(0, -6)) 4421201594 4421201636 4421201684 4421200970 4421201523
+        
+       // console.log(data)
     }); 
+    //console.log(this.receivedSnmp.linkSt)
+   // this.done=true;
   }
+
+  
 }
 
 @Component({

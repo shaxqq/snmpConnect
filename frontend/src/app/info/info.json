@@ -1,0 +1,195 @@
+{
+    "optic":[
+        {
+            "id": 1,
+            "title": "BDCOM",
+            "content": [
+                {
+                    "name": "Сложить / Поднять",
+                    "command": "на ону - epon onu port 1 ctc shutdown / no epon onu port 1 ctc shutdown"
+                },
+                {
+                    "name": "Удалить ону c ветки",
+                    "command": "конфиг, заходим на ветку - (узнаём мак ону) no epon bind-onu sequence (порядковый номер ону( 1-64))"
+                },
+                {
+                    "name": "300mb",
+                    "command": "epon sla upstream pir 300000 cir 12000",
+                    "command1": "epon sla downstream pir 300000 cir 12000",
+                    "command2": ""
+                },
+                {
+                    "name": "500mb",
+                    "command": "epon sla upstream pir 500000 cir 262144",
+                    "command1": "epon sla downstream pir 500000 cir 262144"
+                },
+                {
+                    "name": "1gb",
+                    "command": "epon sla upstream pir 1000000 cir 262144",
+                    "command1": "epon sla downstream pir 1000000 cir 262144",
+                    "command2": "/",
+                    "command3": "epon sla upstream pir 1000000 cir 1000",
+                    "command4": "epon sla downstream pir 1000000 cir 1000"
+                }                
+            ]
+        },
+        {
+            "id": 2,
+            "title": "Quidway",
+            "content": [
+                {
+                    "name": "Включаем/отключаем правила привязки",
+                    "command": "заходим на порт - undo ip source check user-bind enable"
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "title": "Raisecom",
+            "content": [
+                {
+                    "name": "порт 1gb в 100",
+                    "command": "int port# / sfp detect-mode force-100base-x"
+                },
+                {
+                    "name": "1gb",
+                    "command": "rate-limit ingress cir 1024000 cbs 16384",
+                    "command1": "rate-limit egress cir 1024000 cbs 16384"
+                },
+                {
+                    "name": "Посмотреть loop",
+                    "command": "sh interf loopback detect"
+                }
+                
+            ]
+        },
+        {
+            "id": 4,
+            "title": "FoxGate",
+            "content": [
+                {
+                    "name": "Зайти на указанные порты",
+                    "command": "interface range ethernet 0/0/# to ethernet 0/0/#"
+                },
+                {
+                    "name": "порт 1gb в 100",
+                    "command": "на порту - phystate 100base-fx"
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "title": "Dlink",
+            "content": [
+                {
+                    "name": "Трафик (3526)",
+                    "command": "show packet ports #",
+                    "command1": "config port_vlan (#port) pvid (#vlan)",
+                    "command2": "config port_vlan (#port) pvid (#vlan)"
+                },
+                {
+                    "name": "Приоритет по вланам",
+                    "command": "config gvrp (порт) state disable ingress_checking enable acceptable_frame admit_all pvid #",
+                    "command1": "config port_vlan (#port) pvid (#vlan)"
+                }
+            ]
+        }
+    ],
+    "nonOptic": [
+        {
+            "id": 1,
+            "title": "Linksys",
+            "content": [
+                {
+                    "name": "Перевести транковый порт в абонентский",
+                    "command": "(На порту) switchport (general/trunk) allowed vlan remove all",
+                    "command1": "switchport mode access",
+                    "command2": "switchport access vlan #",
+                    "command3": "no ip dhcp snooping trust",
+                    "command4": "no ip arp inspection trust",
+                    "command5": "ip source-guard"
+                },
+                {
+                    "name": "Если 2 абонента с 1 свича не пингуют один одного",
+                    "command": "во влане пишем - no switchport protected-port fastethernet"
+                },
+                {
+                    "name": "Лаги/цпу",
+                    "command": "попробовать - config / no ip igmp snooping"
+                },
+                {
+                    "name": "от вредного трафика (на крайняк) - порт протектет включить и acl",
+                    "command": "console(config)# можно и на порт",
+                    "command1": "ip access-list (название)",
+                    "command2": "permit any (ip абонента) 0.0.0.0 any",
+                    "command3": "permit any any (ip абонента) 0.0.0.0",
+                    "command4": "deny any any any",
+                    "command5": "exit",
+                    "command6": "и добавляем console(config-if)# service-acl input (название)"
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "title": "ZTE",
+            "content": [
+                {
+                    "name": "Cтатус линки",
+                    "command": "sh port 1-24 br"
+                },
+                {
+                    "name": "Если прокинут ДХЦП конфиг и нужно статику (но лучше прокидывать цельный конфиг)",
+                    "command": "удаляем - set dhcp ip-source-guard del port [номер порта]"
+                },
+                {
+                    "name": "Если есть комбо порты и нужно поменять в нужныное нам состояние",
+                    "command": "set port 25-28 work-mode cooper|fiber|auto"
+                }
+            ]
+        }
+        
+    ],
+    "gateway": [
+        {
+            "id": 1,
+            "title": "Gateway",
+            "content": [
+                {
+                    "name": "DHCP сервера",
+                    "command": "Дарницкий, ИФ, Острог, Корост, Старокон, Шепет - 10.110.0.3",
+                    "command1": "Славута, Берд, Бобр, Бровары, Житомир, Макаров, Черняхов  - 10.110.0.4",
+                    "command2": "Львов - 10.110.0.7",
+                    "command3": "Днепр - 10.110.0.9",
+                    "command4": "КР - 10.110.0.11",
+                    "command5": "Деснянский - 10.110.0.12"
+                },
+                {
+                    "name": "Посмотреть ip dhcp сервера",
+                    "command": "sh running-config interface vlan#",
+                    "command1": "display dhcp relay all"
+                },
+                {
+                    "name": "Логи zte",
+                    "command": "sh loggin alarm"
+                },
+                {
+                    "name": "jun",
+                    "command": "show bridge mac-table | match (мак) - просмотр мака",
+                    "command1": "show bridge mac-table vlan-id # - маки по влану",
+                    "command2": "show bridge domain interface xe-2/0/0.0 - маки на порту",
+                    "command3": "show ethernet-switching table | match (мак) - просмотр мака",
+                    "command4": "show ethernet-switching table vlan # - маки по влану"
+                },
+                {
+                    "name": "DHCPLOG",
+                    "command": "windows - в гугле 'nc.exe download', скачиваем и разархивируем в c/wind/system32",
+                    "command1": "команда - nc.exe 'ip' 9998 | findstr 'mac'",
+                    "command2": "linux",
+                    "command3": "команда - nc 'ip' 9998 | grap 'mac'",
+                    "command4": "adm",
+                    "command5": "http://adm.o3.ua/?mod=dhcp_log"
+                }
+            ]
+        }
+    ]
+}

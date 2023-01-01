@@ -1,9 +1,12 @@
-<div class="scanForm">
-    <p style="align-self: center; margin: 2rem 0 0 0;">macScan</p>
-    <p>IP свитчей:</p>
-    <textarea  name='switches' cols="55" rows="5" [(ngModel)]='scan.switches'></textarea>
-    <p>МАС адрес:</p>
-    <input class="scanFormInput" name='macSrc' type="text" [(ngModel)]='scan.macSrc' />
+<div class="scanForm"> 
+    <div class="form-outline-white scanForm">
+        <label class="form-label-white">IP свитчей:</label>
+        <textarea  name='switches' cols="55" rows="5" [(ngModel)]='scan.switches'></textarea>
+    </div>   
+    <div class="form-outline-white">
+        <label class="form-label-white">МАС адрес:</label>
+        <input class="form-control form-control-sm" name='macSrc' type="text" [(ngModel)]='scan.macSrc' />
+    </div>   
 </div>
 <div>
     <button [ngClass]="{scanSwPort: this.done}" [disabled]="!this.done" (click)='submit(scan)'>Найти</button>

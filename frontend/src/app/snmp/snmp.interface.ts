@@ -4,11 +4,18 @@ export class Snmp {
             let patternMac = new RegExp('(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?).(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?).(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?).(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)')
             let inpSw = this.sw
             let res = ''
-            let currentIp = inpSw.match(patternMac)
-            if(currentIp != null){
-                res = currentIp[0]
-            }
-            return res
+            if (inpSw != undefined && inpSw.length === 0) {
+              return alert("Добавьте свитчи");
+              } else  {
+                let currentIp = inpSw.match(patternMac)
+                console.log(currentIp)
+                if(currentIp != null){
+                    res = currentIp[0]
+                }
+                console.log(res)
+                return res
+              }
+
         }
 }
 export class Scan {
@@ -30,22 +37,19 @@ export class Scan {
     }
 
     getSwitches() {
-        let patternMac = new RegExp('(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?).(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?).(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?).(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)')
+        let patternSw = new RegExp('(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?).(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?).(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?).(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)')
         let res = [];
         let str = this.switches
-        let ips = str.match(patternMac);
+       // let ips = str.match(patternSw);
         if (str != undefined && str.length === 0) {
-      alert("No switches");
+      alert("Добавьте свитчи");
     } else  {
-        ips = str.match(patternMac);
-    }
-      
-
-        while(ips != null)
+       let ips = str.match(patternSw);
+       while(ips != null)
         { 
             res.push(ips[0]);
             str = str.substr(ips.index + ips[0].length);
-            ips = str.match(patternMac);
+            ips = str.match(patternSw);
         }
         for(let i = 0; i < res.length; i++)
         {
@@ -53,6 +57,7 @@ export class Scan {
                 res.splice(i, 1);
             }    
         }
+    }        
         return res;
         }
 }

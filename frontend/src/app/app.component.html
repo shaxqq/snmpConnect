@@ -1,8 +1,26 @@
-<h1>telnet app test</h1>
-<div>
-</div>
-<div>
-<app-snmp></app-snmp>
-<app-scan></app-scan>
+<nav class="sidenav">
+    <a mdbRipple class="navbarBrand" href="#">
+        <img
+          src="https://raw.githubusercontent.com/shaxqq/buletin-board-react/master/client/src/logo.jpg"
+          height="45"
+          alt=""
+          loading="lazy"
+        />
+      </a>
+      <ul class="sidenavMenu">
+        <li class="sidenavItem ">
+          <a mdbRipple class="sidenavLink " routerLink="/snmp">Базовая проверка</a>
+        </li>
+        <li class="sidenavItem">
+          <a mdbRipple class="sidenavLink" routerLink="/scan">Мак сканер</a>
+        </li>
+        <li class="sidenavItem">
+          <a mdbRipple class="sidenavLink" routerLink="/info">Доп. инфо</a>
+        </li>
+      </ul>
+  </nav>
+
+<div class="content">
+<router-outlet></router-outlet>
 </div>
 

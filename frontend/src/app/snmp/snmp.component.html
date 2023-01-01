@@ -1,58 +1,95 @@
-<p>snmp works!</p>
+<p>Работает в тестовом режиме <b>('beta version')</b></p>
 <div>
-    <div>MAC: <span *ngIf='done'>{{this.receivedSnmp.macAddr}}</span></div> 
-    <div>Порт в: <span *ngIf='done'> {{this.receivedSnmp.speed.slice(0, -6)}} мб </span></div>
-    <div>Админское состояние: <span *ngIf='done'>{{this.receivedSnmp.adminSt == '1' ? ' Up': ' Down'}}</span></div>
-    <div>Физическое состояние: <span *ngIf='done'>{{this.receivedSnmp.linkSt == '1' ? ' Up': ' Down'}}</span></div>
-    <div>Description: <span *ngIf='done'>{{this.receivedSnmp.description}}</span></div>
-    <div>Vlan: <span *ngIf='done'>{{this.receivedSnmp.vlan}}</span></div>
+  <div>
+    MAC: <span *ngIf="done">{{ this.receivedSnmp.macAddr }}</span>
+  </div>
+  <div>
+    Порт в:
+    <span *ngIf="done"> {{ this.receivedSnmp.speed.slice(0, -6) }} мб </span>
+  </div>
+  <div>
+    Админское состояние:
+    <span *ngIf="done" >{{
+      this.receivedSnmp.adminSt == '1' ? " Up" : " Down"
+    }}</span>
+  </div>
+  <div>
+    Физическое состояние:
+    <span *ngIf="done" >{{
+      this.receivedSnmp.linkSt == '1' ? " Up" : " Down"
+    }}</span>
+  </div>
+  <div>
+    Description: <span *ngIf="done">{{ this.receivedSnmp.description }}</span>
+  </div>
+  <div>
+    Vlan: <span *ngIf="done">{{ this.receivedSnmp.vlan }}</span>
+  </div>
 </div>
-<div>Привязка:
-    <table class="binding">
+<!-- <b class="green">' Up'</b>: <b class="red">' Down'</b> -->
+<!-- {{this.receivedSnmp.adminSt == '1' ? <b class="green">' Up'</b> : <b class="red">' Down'</b>}} -->
+<div>
+  Привязка:
+  <table class="table table-dark w-auto">
+    <thead>
     <tr>
-        <td>MAC Address</td>
-        <td>IP Address</td>
-        <td>Lease (sec)</td>
-        <td>Type:</td>
-        <td>Port:</td>
+      <th scope="col">MAC Address</th>
+      <th scope="col">IP Address</th>
+      <th scope="col">Lease (sec)</th>
+      <th scope="col">Type:</th>
+      <th scope="col">Port:</th>
     </tr>
+    </thead>
+    <tbody>
     <tr>
-        <td>{{this.receivedSnmp.macAddr}}</td>
-        <td>{{this.receivedSnmp.binding.ip}}</td>
-        <td>{{this.receivedSnmp.binding.lease}}</td>
-        <td *ngIf='done'>{{this.receivedSnmp.binding.type}}</td>
-        <td>{{this.receivedSnmp.binding.int}}</td>
+      <th scope="col">{{ this.receivedSnmp.macAddr }}</th>
+      <th scope="col">{{ this.receivedSnmp.binding.ip }}</th>
+      <th scope="col">{{ this.receivedSnmp.binding.lease }}</th>
+      <th scope="col" *ngIf="done">{{ this.receivedSnmp.binding.type }}</th>
+      <th scope="col">{{ this.receivedSnmp.binding.int }}</th>
     </tr>
-    </table>
+    </tbody>
+  </table>
 </div>
-<div>Ошибки:
-    <table class="error">
+<div>
+  Ошибки:
+  <table class="table table-dark w-auto">
+    <thead>
     <tr>
-        <td>FCS</td>
-        <td>Collision</td>
-        <td>MAC Errors</td>
-        <td>Symbol</td>
+      <th scope="col">FCS</th>
+      <th scope="col">Collision</th>
+      <th scope="col">MAC Errors</th>
+      <th scope="col">Symbol</th>
     </tr>
+    </thead>
+    <tbody>
     <tr>
-        <td>{{this.receivedSnmp.err.fcs}}</td>
-        <td>{{this.receivedSnmp.err.collision}}</td>
-        <td>{{this.receivedSnmp.err.macEr}}</td>
-        <td>{{this.receivedSnmp.err.symbol}}</td>
+      <th scope="col">{{ this.receivedSnmp.err.fcs }}</th>
+      <th scope="col">{{ this.receivedSnmp.err.collision }}</th>
+      <th scope="col">{{ this.receivedSnmp.err.macEr }}</th>
+      <th scope="col">{{ this.receivedSnmp.err.symbol }}</th>
     </tr>
-    </table>
+  </tbody>
+  </table>
 </div>
 <div class="srcSnmpInput">
-    <span>
-    <p>IP свитча:</p>
-    <input class="snmpInput" type="text" name='sw' [(ngModel)]='snmp.sw' />
-</span>
-<span>
-    <p>Порт:</p>
-    <input type="text" name='port' [(ngModel)]='snmp.port' />
-</span>
+  <div class="form-outline-white snmpInput">
+    <label class="form-label-white" for="formWhite">Свитч:</label>
+    <input type="text" id="formWhite" class="form-control form-control-sm" name="sw" [(ngModel)]="snmp.sw"/>
+  </div>
+  <div class="form-outline-white">
+    <label class="form-label-white" for="formWhite">Порт:</label>
+    <input type="text" id="formWhite" class="form-control form-control-sm" name="port" [(ngModel)]="snmp.port"/>
+  </div>
 </div>
 <div>
-    <button [ngClass]="{scanSwPort: this.done}" [disabled]="!this.done" (click)='submit(snmp)'>Найти</button>
+  <button
+    [ngClass]="{ scanSwPort: this.done }"
+    [disabled]="!this.done"
+    (click)="submit(snmp)"
+  >
+    Найти
+  </button>
 </div>
 
 <!-- .toString().slice(0, -6) + -->

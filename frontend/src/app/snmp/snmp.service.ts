@@ -14,6 +14,7 @@ export class SnmpService {
       sw: sw,
       port: snmp.port
     }
+    
     return this.http.post('http://188.231.188.124:3000/snmp', body)
   }
 }
@@ -23,9 +24,6 @@ export class SnmpService {
 })
 export class ScanService {
   constructor(public http: HttpClient) { }
-
-
-
   macScan(scan: Scan) {
     let sw = scan.getSwitches()
     let mac = scan.getMac(scan.macSrc)
@@ -33,7 +31,7 @@ export class ScanService {
       switches: sw,
       macSrc: mac,
     }
-    
+  
     return this.http.post('http://188.231.188.124:3000/scan', body)
   }
 }

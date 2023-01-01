@@ -12,7 +12,7 @@ tr {
     text-align: center;
 }
 td {
-   width: 100px; 
+   width: 100px;
    height: 20px;
 }
 input, textarea {
@@ -22,7 +22,7 @@ input, textarea {
 button {
     display: flex;
     justify-content: center;
-    margin: 0.5rem;
+    margin-top: 0.5rem;
     padding: 0.2rem 0.5rem 0.2rem 0.5rem ;
     background-color: #1b1b1b;
     border-radius: 0.25rem;
@@ -31,14 +31,14 @@ button {
     cursor: pointer;
 
     &:hover{
-        background-color: #858585; 
+        background-color: #858585;
     }
     &:disabled {
         background-color: #ec3f3f;
         color: #343434;
         cursor: progress;
     }
-    
+
 }
 .scanResult {
     width: 30rem;
@@ -52,15 +52,24 @@ button {
     flex-direction: column;
     align-items: flex-start;
 }
-input {
-    border: 1px solid #424242;
-}
+// input {
+//     border: 1px solid #424242;
+// }
 .scanFormInput {
     margin-bottom: 0.5rem;
 }
 .snmpInput {
-    margin-right: 0.2rem;
+    margin-right: 0.5rem;
 }
 .srcSnmpInput {
     display: flex;
 }
+
+@media all and (max-width: 300px) {
+    .md-form.md-outline label {
+      width: 100px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }

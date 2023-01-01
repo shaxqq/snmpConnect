@@ -11,8 +11,8 @@ export class ScanController {
      async macScan(@Req() req: Request, @Res() res: Response){
          const switches: any = req.body.switches
          const macSrc: string = req.body.macSrc
-        //  console.log('backSw', switches)
-        //  console.log('backMac', macSrc)
+           console.log('backSw', switches)
+           console.log('backMac', macSrc) 
        let swPort = []    
         for (let ip of switches){
          let result = await this.scanService.macScan(ip, macSrc) 
@@ -24,6 +24,7 @@ export class ScanController {
             swPort[i] = ''
           }
         }
+        console.log(swPort)
         return res.json(swPort)
       }  
 }
