@@ -13,6 +13,10 @@
                     "command": "конфиг, заходим на ветку - (узнаём мак ону) no epon bind-onu sequence (порядковый номер ону( 1-64))"
                 },
                 {
+                    "name": "Выставить нужный влан",
+                    "command": "конфиг, заходим на ону - epon onu port 1 ctc vlan mode tag # priority 0"
+                },
+                {
                     "name": "300mb",
                     "command": "epon sla upstream pir 300000 cir 12000",
                     "command1": "epon sla downstream pir 300000 cir 12000",
@@ -83,9 +87,7 @@
             "content": [
                 {
                     "name": "Трафик (3526)",
-                    "command": "show packet ports #",
-                    "command1": "config port_vlan (#port) pvid (#vlan)",
-                    "command2": "config port_vlan (#port) pvid (#vlan)"
+                    "command": "show packet ports #"
                 },
                 {
                     "name": "Приоритет по вланам",
@@ -176,7 +178,7 @@
                     "name": "jun",
                     "command": "show bridge mac-table | match (мак) - просмотр мака",
                     "command1": "show bridge mac-table vlan-id # - маки по влану",
-                    "command2": "show bridge domain interface xe-2/0/0.0 - маки на порту",
+                    "command2": "show bridge domain interface xe-#/#/#.# - маки на порту",
                     "command3": "show ethernet-switching table | match (мак) - просмотр мака",
                     "command4": "show ethernet-switching table vlan # - маки по влану"
                 },

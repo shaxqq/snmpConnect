@@ -9,6 +9,7 @@ export const speedPort = (varbinds: any) => {
             result.portG = portg.toString()
         }
         if (masOid[10] == result.port || (masOid[10]) == result.portG) {
+            console.log(objID.value)
             result.speed = objID.value.toString()
         }
     }
@@ -67,6 +68,7 @@ export const macPort = (varbinds: any) => {
 export const descrPort = (varbinds: any) => {
     for (let objID of varbinds) {
         let masOid = objID.oid.split('.');
+        // console.log('des',masOid)
         if (masOid[10] > 5000) {
             let portg = parseInt(result.port) + 2082476032;
             result.portG = portg.toString()
@@ -76,33 +78,34 @@ export const descrPort = (varbinds: any) => {
         }
     }
 }
+
 // vlan
 export const vlanPort = (varbinds: any) => {
     for (let objID of varbinds) {
         let masOid = objID.oid.split('.');
+        console.log('vlan',masOid)
         if (masOid[10] > 5000) {
             let portg = parseInt(result.port) + 2082476032;
             result.portG = portg.toString()
         }
-        // setTimeout(() => {
+         setTimeout(() => {
             if (masOid[13] == result.port || masOid[13] == result.portG) {
                 result.vlan = objID.value
             }
-        // }, 1000)
+         }, 1000)
     }
 }
-
 
  // error
  export const errorPort = (varbinds: any) => {
     for (let objID of varbinds) {
       let masOid = objID.oid.split('.');
-      
+      console.log('err',masOid)
     if (masOid[10] > 5000) {
         let portg = parseInt(result.port) + 2082476032;
         result.portG = portg.toString()
     }
-    //  setTimeout(() => {
+      setTimeout(() => {
         if (masOid[10] == 3 && masOid[11] == result.port) {
             result.err.fcs = objID.value
         }
@@ -115,6 +118,6 @@ export const vlanPort = (varbinds: any) => {
         if (masOid[10] == 18 && masOid[11] == result.port) {
             result.err.symbol = objID.value
         }
-    //  }, 1000)
+      }, 1000)
     }
   }

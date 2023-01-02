@@ -8,11 +8,11 @@ export class Snmp {
               return alert("Добавьте свитчи");
               } else  {
                 let currentIp = inpSw.match(patternMac)
-                console.log(currentIp)
+            //    console.log(currentIp)
                 if(currentIp != null){
                     res = currentIp[0]
                 }
-                console.log(res)
+            //    console.log(res)
                 return res
               }
 
