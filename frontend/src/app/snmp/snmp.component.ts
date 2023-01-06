@@ -35,10 +35,7 @@ export class SnmpComponent implements OnInit {
   done: any = true
   constructor(public snmpService: SnmpService) { }
 
-  ngOnInit(): void {
-   
-  }
-    
+  ngOnInit(): void {  }
 
   submit(snmp: Snmp) {
     this.done = false
@@ -46,7 +43,7 @@ export class SnmpComponent implements OnInit {
         this.receivedSnmp = data
         this.done=true;
         
-       // console.log(data)
+        console.log(data)
     }); 
     //console.log(this.receivedSnmp.linkSt)
    // this.done=true;
@@ -68,8 +65,7 @@ export class ScanComponent implements OnInit {
    
   constructor(public scanService: ScanService) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {  }
 
  submit(scan: Scan) {
    this.done = false

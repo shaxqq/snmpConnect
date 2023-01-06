@@ -11,6 +11,17 @@ export class ScanService {
                 let swVersion = '';
                 let session = snmp.createSession(ip, '74FRfR7ewJar');     
 
+                  //get sw version for bdcom
+                  session.get(["1.3.6.1.2.1.1.1.0"], function(err:any, varbinds:any){
+                    if (err) {
+                        console.error (err.toString ());
+                    } else {
+                            for (let objID of varbinds) {
+                                swVersion = objID.value.toString('utf8')
+                            }
+                    }
+                });
+             //   console.log('swverNot func',swVersion)
                 function scanPort(varbinds: any) {
                     for (let objID of varbinds) {
                         let masOid = objID.oid.split('.');
@@ -22,44 +33,40 @@ export class ScanService {
                             mac += oidMac;
                         }
                         if (mac == macSrc) {
-                            let oidPort = parseInt(objID.value)                       
+                            let oidPort = parseInt(objID.value) 
+                            let oidPortPon = objID.value                   
                             if (oidPort > 5000)
                             oidPort -= 2082476032;
                             resultScan = oidPort.toString()
+                            
                             //scan pon port
                             if(swVersion.includes('BDCOM')){
                                 function scanPonPort(varbinds:any): void{
                                     for (let objID of varbinds) {
                                         let masOid = objID.oid.split('.');
-                                        if(oidPort == masOid[10]){
+                                        if(oidPortPon == masOid[10]){
+                                            console.log('resObj',objID.value.toString('utf8'))
                                             resultScan = objID.value.toString('utf8')
                                         } 
                                     }
                                 }
                                 session.subtree("1.3.6.1.2.1.2.2.1.2", scanPonPort, doneCallback);
-                            }
+                            }  
+
                         }                  
                     }                    
                 }
+
                 function doneCallback(error: any) {
                     if (error) 
                         resultScan = 'err' + ip + ' : ' + error.toString();
                       //  session.close();
                         setTimeout(() => {
-                            console.log(resultScan)
+                            console.log('resultScanTimeout', resultScan)
                             return resolve(ip + ' : ' + resultScan)
-                          }, 3000)
+                          }, 2000)
                 }
-                 //get sw version for bdcom
-                session.get(["1.3.6.1.2.1.1.1.0"], function(err:any, varbinds:any){
-                    if (err) {
-                        console.error (err.toString ());
-                    } else {
-                            for (let objID of varbinds) {
-                                swVersion = objID.value.toString('utf8')
-                            }
-                    }
-                });
+
                 session.subtree("1.3.6.1.2.1.17.7.1.2.2.1.2", scanPort, doneCallback);
             }
             catch (err) {
