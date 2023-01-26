@@ -34,6 +34,14 @@
                     "command2": "/",
                     "command3": "epon sla upstream pir 1000000 cir 1000",
                     "command4": "epon sla downstream pir 1000000 cir 1000"
+                },
+                {
+                    "name": "1gb Gpon",
+                    "command": "В sh ru смотрим и запоминаем на каких ону уже прокинут ГБ конфиг",
+                    "command1": "Switch_config_gpon0/# no gpon pre-config-template T1 bind-onuid 1-128 (Удалить весь конфиг с ветки)",
+                    "command2": "Switch_config_gpon0/# gpon pre-config-template T1 bind-onuid №-№ (Номера онушек где должно быть 100МБ)",
+                    "command3": "Switch_config_gpon0/# gpon pre-config-template T1-FOR_1G bind-onuid №-№ (Номера онушек где должен быть 1ГБ)",
+                    "command4": "Switch_config_gpon0/# no gpon bind-onu sequence № (Ону на которых должен быть 1ГБ)"
                 }                
             ]
         },
