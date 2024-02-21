@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Telnet Results</title>
+</head>
+<body>
+  <button id="getDataButton">Get Data</button>
+  <div style="display: flex" id="statusPort"></div>
+  <div style="display: flex" id="loopPort"></div>
+
+  <script>
+ document.addEventListener('DOMContentLoaded', () => {
+      const getDataButton = document.getElementById('getDataButton');
+      const statusPort = document.getElementById('statusPort');
+      const loopPort = document.getElementById('loopPort');
+
+      getDataButton.addEventListener('click', async () => {
+        try {
+          const response = await fetch('http://127.0.0.1:3000/getdata');
+          if (response.ok) {
+            const result = await response.text();
+            console.log('Received:', result);
+            const portStatusOn = /Port[\s\S]*\d{2}y\d{2}m\d{2}d\d{2}h\d{2}m\d{2}s/g;
+            const portStatusOff = /Port,Forward/g;
+            const loopPort = /Port[\s\S]*\d{2}y\d{2}m\d{2}d\d{2}h\d{2}m\d{2}s/g;
+            const matches = result.match(portStatusOn | portStatusOff);
+            if (matches) {
+              console.log(matches.input);
+            } else {
+              console.log('No match found');
+            }
+            const lines = matches.input.split(/\r?\n/);
+            const formattedLines = lines.map(line => line.trim());
+            const formattedText = formattedLines.join('<br>');
+            statusPort.innerHTML = `<pre>${formattedText}</pre>`
+          } else {
+            console.error('Error:', response.statusText);
+          }
+        } catch (error) {
+          console.error('Error:', error);
+        }
+      });
+    });
+  </script>
+</body>
+</html>

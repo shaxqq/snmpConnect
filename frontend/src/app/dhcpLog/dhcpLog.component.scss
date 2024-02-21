@@ -1,0 +1,105 @@
+.dataList {
+    list-style: none;
+}
+table {
+    background-color: #343434;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+    margin: 1rem 0 2rem;
+    padding: 0.5rem;
+}
+tr {
+    text-align: center;
+}
+td {
+   width: 100px;
+   height: 20px;
+}
+input, textarea {
+    background-color: #424242;
+    color: aliceblue;
+}
+button {
+    display: flex;
+    justify-content: center;
+    margin-top: 0.5rem;
+    padding: 0.2rem 0.5rem 0.2rem 0.5rem ;
+    background-color: #1b1b1b;
+    border-radius: 0.25rem;
+    border: 0;
+    color: #cdcdcd;
+    cursor: pointer;
+
+    &:hover{
+        background-color: #858585;
+    }
+    &:disabled {
+        background-color: #ec3f3f;
+        color: #343434;
+        cursor: progress;
+    }
+
+}
+.scanResult {
+    width: 30rem;
+    height: 15rem;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+}
+.scanForm {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+// input {
+//     border: 1px solid #424242;
+// }
+.scanFormInput {
+    margin-bottom: 0.5rem;
+}
+.snmpInput {
+    margin-right: 0.5rem;
+}
+.srcSnmpInput {
+    display: flex;
+}
+.logsContainer {
+    margin-top: 30px;
+    height: 500px;
+    overflow-y: auto; 
+}
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    /* Добавить свою собственную иконку стрелки */
+   // background-image: url('arrow-down.png'); /* Замените 'arrow-down.png' на путь к вашей иконке */
+    background-repeat: no-repeat;
+    background-position: right center;
+    /* Добавить свой собственный фон и стили текста */
+    background-color: #424242;
+    color: aliceblue;
+    border: 1px solid #ccc; /* Граница */
+    border-radius: 4px; /* Радиус скругления */
+  }
+  
+  /* Изменить стили при наведении курсора */
+  select:hover {
+    border-color: #666; /* Изменить цвет границы при наведении */
+  }
+  
+  /* Изменить стили при фокусе */
+  select:focus {
+    outline: none; /* Убрать обводку при фокусе */
+    border-color: #007bff; /* Изменить цвет границы при фокусе */
+  }
+
+@media all and (max-width: 300px) {
+    .md-form.md-outline label {
+      width: 100px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }

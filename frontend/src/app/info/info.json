@@ -40,7 +40,7 @@
                     "command": "Switch_config_gpon0/# no gpon pre-config-template T1 bind-onuid №-№,№-№ (Удалить конфиг 100МБ)",
                     "command1": "Switch_config_gpon0/# no gpon pre-config-template T1-FOR_1G bind-onuid №-№,№-№ (Удалить конфиг 1ГБ)",
                     "command2": "Switch_config_gpon0/# gpon pre-config-template T1 bind-onuid №-№,№-№ (Добавляем все ону где должно быть 100МБ)",
-                    "command3": "Switch_config_gpon0/# gpon pre-config-template T1-FOR_1G bind-onuid №-№,№-№ (Добавляем все ону где должно быть 1ГБ)",
+                    "command3": "Switch_config_gpon0/# gpon pre-config-template T1-FOR_1G bind-onuid №-№,№-№ (Добавляем все ону где должен быть 1ГБ)",
                     "command4": "Switch_config_gpon0/# no gpon bind-onu sequence № (Пере регистрируем ону на которых должен быть 1ГБ)"
                 }                
             ]

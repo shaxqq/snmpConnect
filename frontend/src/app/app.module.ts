@@ -8,6 +8,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ScanComponent, SnmpComponent } from './snmp/snmp.component';
 import { Info } from './info/info.component';
+import { CheckComponent } from './baseCheck/check.component';
+import { CheckZteComponent } from './baseCheck/checkZte.component';
+import { CheckLinksysComponent } from './baseCheck/checkLinksys.component';
+import { CheckDlinkComponent } from './baseCheck/checkDlink.component';
+import { CheckBdcomComponent } from './baseCheck/checkBdcom.component';
+import { CheckBdcomSolutionComponent } from './baseCheck/checkBdcomSolution.component';
+import { CheckBdcomGComponent } from './baseCheck/checkBdcomG.component';
+import { CheckRaisecomGComponent } from './baseCheck/checkRaisecomG.component';
+import { CheckFoxGateComponent } from './baseCheck/checkFoxGate.component';
+import { DhcpLogComponent } from './dhcpLog/dhcpLog.component';
 
 
 import { MdbAccordionModule } from 'mdb-angular-ui-kit/accordion';
@@ -25,6 +35,7 @@ import { MdbScrollspyModule } from 'mdb-angular-ui-kit/scrollspy';
 import { MdbTabsModule } from 'mdb-angular-ui-kit/tabs';
 import { MdbTooltipModule } from 'mdb-angular-ui-kit/tooltip';
 import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
+import { SearchPatternPipe } from './dhcpLog/searchPattern.pipe';
 
 
 
@@ -34,6 +45,18 @@ import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
     SnmpComponent,
     ScanComponent,
     Info,
+    CheckComponent,
+    CheckZteComponent,
+    CheckLinksysComponent,
+    CheckDlinkComponent,
+    CheckBdcomComponent,
+    CheckBdcomSolutionComponent,
+    CheckBdcomGComponent,
+    CheckRaisecomGComponent,
+    CheckFoxGateComponent,
+    DhcpLogComponent,
+    SearchPatternPipe,
+    
   ],
   imports: [
     BrowserModule,

@@ -15,7 +15,7 @@ export class SnmpService {
       port: snmp.port
     }
     
-    return this.http.post('http://188.231.188.124:3000/snmp', body)
+    return this.http.post('http://localhost:3000/snmp', body)
   }
 }
 
@@ -32,6 +32,6 @@ export class ScanService {
       macSrc: mac,
     }
   
-    return this.http.post('http://188.231.188.124:3000/scan', body)
+    return this.http.post('http://localhost:3000/scan', body)
   }
 }

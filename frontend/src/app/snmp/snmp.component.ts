@@ -48,8 +48,6 @@ export class SnmpComponent implements OnInit {
     //console.log(this.receivedSnmp.linkSt)
    // this.done=true;
   }
-
-  
 }
 
 @Component({
