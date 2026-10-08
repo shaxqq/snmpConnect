@@ -1,0 +1,35 @@
+<mdb-tabs [pills]="true" [vertical]="true">
+
+    <mdb-tab *ngFor="let optics of optic" title='{{optics.title}}'>
+        <div class="commands" *ngFor="let opticContent of optics.content">
+            <b>{{opticContent.name}}</b>
+            <span>{{opticContent.command}}</span>
+            <span>{{opticContent.command1}}</span>
+            <span>{{opticContent.command2}}</span>
+            <span>{{opticContent.command3}}</span>
+            <span>{{opticContent.command4}}</span>
+        </div>
+    </mdb-tab>
+    <mdb-tab *ngFor="let nonOptics of nonOptic" title='{{nonOptics.title}}'>
+        <div class="commands" *ngFor="let nonOpticContent of nonOptics.content">
+            <b>{{nonOpticContent.name}}</b>
+            <span>{{nonOpticContent.command}}</span>
+            <span>{{nonOpticContent.command1}}</span>
+            <span>{{nonOpticContent.command2}}</span>
+            <span>{{nonOpticContent.command3}}</span>
+            <span>{{nonOpticContent.command4}}</span>
+            <span>{{nonOpticContent.command5}}</span>
+            <span>{{nonOpticContent.command6}}</span>
+        </div>
+    </mdb-tab>
+    <mdb-tab *ngFor="let gateways of gateway" title='{{gateways.title}}'>
+        <div class="commands" *ngFor="let gatewayContent of gateways.content">
+        <b>{{gatewayContent.name}}</b>
+        <span>{{gatewayContent.command}}</span>
+        <span>{{gatewayContent.command1}}</span>
+        <span>{{gatewayContent.command2}}</span>
+        <span>{{gatewayContent.command3}}</span>
+        <span>{{gatewayContent.command4}}</span>
+        <span>{{gatewayContent.command5}}</span>
+    </div></mdb-tab>
+</mdb-tabs>

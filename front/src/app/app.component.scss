@@ -1,0 +1,54 @@
+.sidenav {
+    width: 240px;
+    height: 100%;
+    position: fixed;
+    transition: all 0.3s linear 0s;
+    transform: translateX(0%);
+    background-color: rgb(45, 44, 44);
+}
+.content {
+    padding: 20px 20px 20px 260px;
+    transition: all 0s ease 0s;
+    margin-right: 0px;
+}
+.navbarBrand {
+    display: flex;
+    justify-content: center;
+    padding-top: 1rem!important;
+    padding-bottom: 1rem!important;
+}
+.sidenavMenu {
+    list-style: none;
+    position: relative;
+    padding: 0 0.2rem;
+    margin: 0;
+}
+.sidenavItem {
+    position: relative;
+}
+.sidenavLink {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: .89rem;
+    padding: 1rem 1.5rem;
+    height: 3rem;
+    color: unset;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    border-radius: 5px;
+    transition: all .3s linear;
+}
+a:active {
+    color: inherit;
+    background-color: rgba(18,102,241,.05);
+}
+a:hover {
+    color: inherit;
+    background-color: rgba(18,102,241,.05);
+}
+a:focus {
+    color: inherit;
+    background-color: rgba(18,102,241,.05);
+}

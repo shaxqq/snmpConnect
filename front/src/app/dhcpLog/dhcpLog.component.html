@@ -1,0 +1,49 @@
+<p><b>('beta version')</b></p>
+<div class="srcSnmpInput">
+  <div class="form-outline-white snmpInput">
+    <label class="form-label-white" for="dhcpIp">Dhcp IP:</label>
+    <select id="dhcpIp" class="form-control form-control-sm" [(ngModel)]="dhcpIp">
+      <option disabled selected value="">-- select server --</option>
+      <option value="10.110.0.3">10.110.0.3 - DHCP server</option>
+      <option value="10.110.0.4">10.110.0.4 - DHCP server</option>
+      <option value="10.110.0.7">10.110.0.7 - DHCP server</option>
+      <option value="10.110.0.9">10.110.0.8 - DHCP server</option>
+      <option value="10.110.0.11">10.110.0.11 - DHCP server</option>
+      <option value="10.110.0.12">10.110.0.12 - DHCP server</option>
+    </select>
+  </div>
+  <div class="form-outline-white snmpInput">
+    <label class="form-label-white" for="searchPattern">Search:</label>
+    <input
+      class="form-control form-control-sm"
+      type="text"
+      id="searchPattern"
+      [(ngModel)]="searchPattern"
+    />
+  </div>
+  <div class="form-outline-white">
+    <label class="form-label-white" for="timeout">Timeout:</label>
+    <input
+      class="form-control form-control-sm"
+      type="number"
+      id="timeout"
+      [(ngModel)]="timeout"
+    />
+  </div>
+</div>
+<div class="srcSnmpInput">
+  <button (click)="connect()">Connect</button>
+  <button (click)="disconnect()">Disconnect</button>
+</div>
+
+<div class="logsContainer">
+  <div *ngFor="let log of logs">
+    <div *ngIf="!searchPattern || log.includes(searchPattern)">
+      <div [innerHTML]="log | SearchPattern : searchPattern"></div>
+    </div>
+  </div>
+</div>
+
+<!-- [ngClass]="{ scanSwPort: this.done }"
+[disabled]="!this.done" -->
+<!-- .toString().slice(0, -6) + -->

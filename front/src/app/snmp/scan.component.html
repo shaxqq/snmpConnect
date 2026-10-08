@@ -1,0 +1,19 @@
+<div class="scanForm"> 
+    <div class="form-outline-white scanForm">
+        <label class="form-label-white">IP свитчей:</label>
+        <textarea  name='switches' cols="55" rows="5" [(ngModel)]='scan.switches'></textarea>
+    </div>   
+    <div class="form-outline-white">
+        <label class="form-label-white">МАС адрес:</label>
+        <input class="form-control form-control-sm" name='macSrc' type="text" [(ngModel)]='scan.macSrc' />
+    </div>   
+</div>
+<div>
+    <button [ngClass]="{scanSwPort: this.done}" [disabled]="!this.done" (click)='submit(scan)'>Найти</button>
+</div>
+<table class="scanResult">
+    <li class="dataList" *ngFor="let data of this.receivedScan"> 
+        <span class="data">{{data}}</span>
+    </li>     
+</table>
+<!--  -->

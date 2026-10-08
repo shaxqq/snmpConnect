@@ -1,2 +1,2 @@
 # snmpConnect
-check
+snmpConnect

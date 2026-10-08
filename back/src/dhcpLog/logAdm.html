@@ -1,0 +1,371 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
+		<title>#!/acct/adm</title>
+		<link rel="icon" href="../html/images/favicon.ico" type="image/x-icon">
+		<link type="text/css" href="../html/css/custom-theme/jquery-ui-1.8.16.custom.css" rel="stylesheet" />	
+		<script type="text/javascript" src="../html/js/jquery-1.6.2.min.js"></script>
+		<script type="text/javascript" src="../html/js/jquery-ui-1.8.16.custom.min.js"></script>
+		<script type="text/javascript" src="../html/js/jquery.timers.js"></script>
+		<script type="text/javascript" src="../html/js/jquery-dialog-fake.js"></script>
+		<!--script type="text/javascript" src="../html/js/jquery.ui.datepicker-ru.js"></script-->
+		<script type="text/javascript" src="../html/js/jquery.ui.datepicker-ua.js"></script>
+		<script type="text/javascript" src="../html/development-bundlesss/ui/jquery.effects.clip.js"></script>
+		<script type="text/javascript" src="../html/development-bundlesss/ui/jquery.effects.blind.js"></script>		
+		
+		
+		<!--  snow >
+		<script type="text/javascript" src="../html/js/jquery.snow.js"></script>
+		<script>
+			$(document).ready( function(){
+					$.fn.snow({ minSize: 10, maxSize: 30, newOn: 700, flakeColor: '#fff' });
+			});
+		</script>
+		< end snow  -->
+		
+		<link type="text/css" href="../html/css/ui.selectmenu.css" rel="stylesheet" />
+		<script type="text/javascript" src="../html/js/ui.selectmenu.js"></script>
+		
+		
+		<link type="text/css" href="../html/css/fg.menu.css" rel="stylesheet" />
+		<script type="text/javascript" src="../html/js/fg.menu.js"></script>		
+		
+		
+
+		<link type="text/css" href="../html/css/main.fake.css" rel="stylesheet" />
+		<script type="text/javascript" src="../html/js/index.fake.js"></script>
+		
+		<link href="../html/Jplayer/skin/blue.monday/jplayer.blue.monday.css" rel="stylesheet" type="text/css" />
+		<script type="text/javascript" src="../html/js/jquery.jplayer.min.js"></script>
+		<script type="text/javascript" src="../html/js/alarm_off.fake.js"></script>
+		
+		<style type="text/css">
+			
+			body {
+				background: white url(../html/images/grad-repeat.jpg) repeat-x 50% 0%;
+				margin: 0px;
+			}
+			
+			.hidden { position:absolute; top:0; left:-9999px; width:1px; height:1px; overflow:hidden; }
+			.fg-button { clear:left; text-decoration:none !important; cursor:pointer; position: relative; text-align: center; zoom: 1; }
+			.fg-button .ui-icon { position: absolute; top: 50%; margin-top: -8px; left: 50%; margin-left: -8px; }
+			button.fg-button { width:auto; overflow:visible; } /* removes extra button width in IE */
+			.fg-menu-container {z-index: 1009;}	
+			.fg-button.ui-state-loading .ui-icon { background: url(spinner_bar.gif) no-repeat 0 0; }
+			#menu_more { display: inline-block; z-index: 1005; }
+			
+			.grad-left {
+				background: url(../html/images/grad-top-left.jpg) no-repeat 0% 0%;
+			}
+			.grad-right {
+				background: url(../html/images/grad-top-right.jpg) no-repeat 100% 0%;
+			}
+			.wrap {
+				background: url(../html/images/background-spots.png);
+				padding: 63px 20px 20px;
+			}
+			
+			.fake_header, .fake_footer {
+				background: url(../html/images/bkg-header.png) repeat-x;
+				color: white;
+				height: 46px;
+				position: fixed;
+				width: 100%;
+				z-index: 9999;
+			}
+			
+		</style>
+<script>
+$(function() {
+	
+});
+</script>
+
+</head>
+
+<!-- BODY START -->	
+<body>
+		
+	<div id="menu_more_content" class="hidden">
+		<ul>
+			<li><a href="#">Логи</a>
+				<ul>
+					<li><a href="/?mod=get_stats">Комутатори</a></li>
+					<li><a href="/?mod=new_get_stats">Новий звіт Комутатори</a></li>
+					<li><a href="/?mod=aggr_log">Агрегація</a></li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+		
+		
+	<div id="main_panel" class="ui-widget-header">
+		
+		<div style="float: left; margin-left: 95px;" >
+			<a id="home" class="href_butt" href="/" style="padding: 2px 5px 2px 5px;" > Головна </a>			
+			<div id="menu_button" style="padding-left: 5px; display: inline-block;" >
+				<a href="/?mod=new_pinger" id="switches" >Комутатори</a>
+                <a href="/?mod=ring" id="ring" >Кільця</a>
+				<a href="/?mod=aggr" id="aggr" >Агрегація</a>
+				<a href="/?mod=search" id="search" title="Пошук" >&nbsp;</a>
+				<a class="fg-button ui-widget ui-state-default"  title="Доп. меню" id="menu_more" style="display: inline-block; z-index: 1005;" ><span class="ui-icon ui-icon-triangle-1-se"></span>stuff</a>
+			</div>		
+		</div>
+		
+		
+		
+		<div style="float: right;" >
+			<a>Login: sazeke &nbsp; </a>	
+			<a id="logout" href="/?ajaxmod=logout" class="href_butt" style="margin-right: 15px; padding: 2px 0px 2px 0px;" >Вийти</a>
+		</div>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	<div class="grad-left">
+                <div class="grad-right">
+                    <div class="wrap">	           
+						<div id="fake_main_content" style="min-height: 360px;" >
+							<div id="dhcp_log_body">
+<table>
+<tr><td>Server:</td>
+<td><select id="dhcp_log_server_list">
+    <option disabled selected value=''>-- select server --</option>
+	
+	
+	    <option value=100.127.247.34 >Dhcp server on Gaydara 50 10.110.0.4 </option>
+	
+	    <option value=100.127.247.10 >Dhcp server on Dragomanova 17 10.110.0.2 </option>
+	
+	    <option value=100.127.247.14 >Dhcp server DEVEL 10.110.0.254 </option>
+	
+	
+</select><button id="dhcp_log_connect">Go</button></td>
+</tr>
+<tr><td>Log length:</td><td><input type=text id='dhcp_log_log_len' value='150'></td></tr>
+<tr><td>Timeout</td><td><input type=text id='dhcp_log_timeout' value='300'></td>
+<tr><td>Search:</td><td><input type=text id='dhcp_log_search'></td></tr>
+</table>
+<div id="dhcp_log_log"></div>
+</div>
+<script>
+var cur_conn;
+var cur_dhcp_ip;
+var ses_timeout;
+var cur_pattern = '';
+var pattern_timer;
+var log_div;
+var len_in;
+
+$( document ).ready( function(){
+    log_div = document.getElementById('dhcp_log_log');
+    len_in = document.getElementById('dhcp_log_log_len');
+    
+    // connect button
+    document.getElementById('dhcp_log_connect').onclick = function(){
+	var dhcp_ip = document.getElementById('dhcp_log_server_list').options[document.getElementById('dhcp_log_server_list').selectedIndex].value;
+	if (dhcp_ip){
+	    if (cur_conn){
+		disconnect();
+	    }
+	    document.getElementById('dhcp_log_log').innerHTML = '';
+	    cur_dhcp_ip = dhcp_ip;
+	    cur_conn = connect_to_dhcp(cur_dhcp_ip);
+	}
+    }
+    
+    // search input
+    
+    document.getElementById('dhcp_log_search').oninput = function (){
+	clearTimeout(pattern_timer);
+	pattern_timer = setTimeout(function(){
+	    change_pattern(document.getElementById('dhcp_log_search').value);
+	}, 2000);
+    }
+});
+
+function change_pattern(new_pattern){
+    cur_pattern = new_pattern;
+    chk_pattern(log_div.children);
+}
+
+function chk_pattern(node_list){
+    for (index = 0; index < node_list.length; index++){
+	var child = node_list[index];
+	var text = child.innerHTML;
+	if ( text.indexOf(cur_pattern) != -1 ){
+		child.innerHTML = text.replace(cur_pattern, "<b>$&</b>");
+		child.setAttribute("class", "dhcp_log_visible");
+	}else{
+		child.setAttribute("class", "dhcp_log_hiden");
+	}
+    }
+    return node_list;
+}
+
+function insert_to_log(node_list){
+    
+    chk_pattern(node_list);
+
+    var node_len = node_list.length;
+	
+    for (index = 0; index < node_len; index++){
+	log_div.appendChild(node_list[index].cloneNode(1));
+    }
+    
+    var set_len = len_in.value;
+    
+    if (set_len < log_div.children.lenght){
+    
+	var num_to_del = log_div.children.lenght - set_len;
+
+	for (i = 0; i < num_to_del; i++){
+	    if (log_div.children[i].className != 'dhcp_log_visible'){
+		log_div.removeChild( log_div.children[i] );
+		var num_to_del = log_div.children.lenght - set_len;
+	    }
+	}
+    }
+    log_div.scrollTop = log_div.scrollHeight;
+}
+
+function disconnect(){
+    cur_conn.onclose = function (){};
+    cur_conn.close();
+    clearTimeout(ses_timeout);
+    cur_dhcp_ip = '';
+    document.getElementById('dhcp_log_connect').setAttribute("class", "disconnected");
+    var msg = document.createElement('div');
+    msg.innerHTML = 'timedOut';
+    log_div.appendChild(msg);
+}
+
+function connect_to_dhcp(dhcp_ip){
+    var ws = new WebSocket("wss://adm.o3.ua/ws_dhcp/"+dhcp_ip);
+        
+    // WebSocket 
+    ws.onopen = function() {
+	document.getElementById('dhcp_log_connect').setAttribute("class", "connected");
+	ses_timeout = setTimeout(
+	    function() { 
+		disconnect();
+	    }, 
+	    ( document.getElementById('dhcp_log_timeout').value * 1000)
+	);
+    };
+    ws.onclose = function() {
+	setTimeout(
+	    function() {
+		var msg = document.createElement('div');
+		msg.innerHTML = 'ReConnecting';
+		log_div.appendChild(msg);
+		cur_conn = connect_to_dhcp(cur_dhcp_ip);  
+	    }, 
+	    1000 
+	) 
+    };
+ 
+    ws.onmessage = function(evt) { 
+	var new_pack = document.createElement('div');
+	new_pack.insertAdjacentHTML('afterBegin', evt.data);
+	insert_to_log(new_pack.children);		
+    };
+    
+    ws.onerror = function(error) {
+	var msg = document.createElement('div');
+	console.log(error);
+	msg.innerHTML = "Ошибка " + error;
+	log_div.appendChild(msg);
+    };
+    
+    return ws;
+}
+</script>
+
+<style type="text/css">
+	.dhcp_log_hiden {
+		display: none;
+	}
+	
+	.dhcp_log_visible b {
+		background-color: #FFFFB5;
+	}
+	.connected {
+	    background-color: #7CFD77;
+	}
+	
+	.disconnected {
+	    background-color: #FD7777;
+	}
+	
+	#dhcp_log_body {
+	    background-color: #D7DFFF;
+	    padding: 15px;
+	    border: 1px solid #000000;
+	    border-radius: 10px;
+	}
+	
+	#dhcp_log_log {
+	    height: 800px;
+	    overflow-y: scroll;
+	    background-color: #FFFFFF;
+	    padding: 10px;
+	    border-radius: 10px;
+	    font-size: 12px;
+	}
+<style>		
+						</div>			
+                    </div>
+                </div>
+            </div>
+	
+	
+
+	
+
+	
+	
+	<div id="footer_bar" style="border-bottom: 3px solid #2f43ba; width: 100%; bottom: 0px; position: fixed; " >
+
+	</div>
+
+	<style>
+		.stat_line { 
+			color: #2f43ba; 
+			display:inline-block;
+		}
+		
+		//#jp_container_1 {
+		//	display:none;
+		//}
+	</style>
+	
+
+	<div id="sys_stat" style="text-align: center; margin: 3px; color: #333;  ">
+
+	{
+		<div class="stat_line" >QUERY =></div> <div style="display: inline-block" > '1' </div>,&nbsp;
+		<div class="stat_line" >UPTIME =>&nbsp;</div><div style="display: inline-block" > '3434 days,  1:50' </div>,&nbsp;
+		<div class="stat_line" >TIME =>&nbsp;</div><div style="display: inline-block" > '0.984111667451547' </div>,&nbsp;
+		<div class="stat_line" >CPU =>&nbsp;</div><div style="display: inline-block" > '1.19, 1.17, 1.12
+' </div>
+	}
+	</div>
+	<br>
+	
+	<div class="socks" style="background-size: cover !important; display: block; top: 60px; width: 128px; height: 96px; left: -25px; position: fixed; opacity: 0.8; background: url(../html/images/flags_PNG14708.png) no-repeat 0 0;">
+		
+	</div>
+	
+	
+	
+
+
+</body>
+</html>
